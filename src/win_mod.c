@@ -19,3 +19,10 @@ void update_win(struct win_s *win)
 {
     mvaddstr(win->y, win->x, win->win);
 }
+
+void destroy_win(struct win_s *win)
+{
+    free(win->win);
+    free(win);
+    win = NULL;
+}

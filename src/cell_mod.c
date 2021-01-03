@@ -81,3 +81,13 @@ void cell_mod_cleanup(void)
     xfront=NULL;  yfront=NULL;  xseen=NULL;  yseen=NULL;
     size = 0; 
 }
+
+void draw_cell(struct win_s *win, int x, int y, char cell)
+{
+    win->win[win->w * y + x] = cell;
+}
+
+int in_scope(int x, int y, struct win_s *win)
+{
+    return ((x>0)&&(x<win->w)&&(y>0)&&(y<win->h));
+}
