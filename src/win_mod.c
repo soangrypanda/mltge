@@ -5,7 +5,6 @@ void init_win_mod()
 {
     init_curses();
 }
-
 static void init_curses(void)
 {   
     initscr();
@@ -14,4 +13,9 @@ static void init_curses(void)
     cbreak();
     keypad(stdscr, 1);
     timeout(0);
+}
+
+void update_win(struct win_s *win)
+{
+    mvaddstr(win->y, win->x, win->win);
 }
