@@ -6,7 +6,6 @@
 #include "win_mod.h"
 #include "err_mod.h"
 
-
 void draw_cell(struct win_s *win, int x, int y, char cell);
 int in_scope(int x, int y, struct win_s *win);
 

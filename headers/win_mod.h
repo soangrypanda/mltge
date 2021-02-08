@@ -15,7 +15,7 @@ struct win_s {
     int w, h, x, y;
 };
 
-#define init_win(wind, wx, wy, ww, wh, scrn)            \
+#define init_win_m(wind, wx, wy, ww, wh, scrn)            \
     struct win_s *wind = calloc(1, sizeof(*wind));      \
     check_alloc(wind, errno, "init_win");               \
     wind->x = wx;                                       \
@@ -33,7 +33,8 @@ struct win_s {
         wind->win[w] = bh;                              \
         wind->win[wind->w * wind->h - wind->w + w] = bh;\
     }                                                   \
-    wind->win[wind->w*wind->h] = '\0'
+    int xew
+    //wind->win[wind->w*wind->h] = '\0'
  
 #define fill_win_with(what, where)                      \
     memset((where)->win, what, (where)->h * (where)->w);\
