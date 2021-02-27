@@ -28,7 +28,7 @@ int find_better_cell(int *px, int *py, int x, int y, struct win_s *scrn, int cel
     size_t sc = 0;
     size_t ret = 0;
     for(;;) {
-        if(scrn->win[scrn->w * y + x] == cell_needed) {
+        if(scrn->win_buf[scrn->w * y + x] == cell_needed) {
             *px = x; *py = y; ret = -1; goto cleanup_n_return;
         }
         if(sc >= size) {
@@ -84,7 +84,7 @@ void cell_mod_cleanup(void)
 
 void draw_cell(struct win_s *win, int x, int y, char cell)
 {
-    win->win[win->w * y + x] = cell;
+    win->win_buf[win->w * y + x] = cell;
 }
 
 int in_scope(int x, int y, struct win_s *win)
