@@ -9,18 +9,11 @@ pthread_mutex_t main_scr_mut    = PTHREAD_MUTEX_INITIALIZER;
 //struct win_s *msp;
 
 static void init_curses(void);
+static void init_win_arr(void);
 void init_win_mod()
 {
     init_curses();
-}
-static void init_curses(void)
-{
-    initscr();
-    curs_set(0);
-    noecho();
-    cbreak();
-    keypad(stdscr, 1);
-    timeout(0);
+    init_win_arr();
 }
 
 struct win_s * init_mainscreen(void)                         
@@ -261,3 +254,23 @@ void test_test(void)
     pthread_mutex_unlock(&win_arr_mut);
 }
 
+
+
+static void init_win_arr(void)
+{
+    win_arr = calloc(1, sizeof(*win_arr));
+    win_arr->max = WIN_ARR_MAX;
+    win_arr->len = 0;
+    win_arr->i   = 0;
+    win_arr->arr = calloc(WIN_ARR_MAX, sizeof(*win_arr->arr));
+}
+
+static void init_curses(void)
+{
+    initscr();
+    curs_set(0);
+    noecho();
+    cbreak();
+    keypad(stdscr, 1);
+    timeout(0);
+}
